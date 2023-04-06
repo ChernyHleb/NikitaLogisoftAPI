@@ -7,8 +7,7 @@ router.get('/', (req, res) => {
         .then((emails) => {
             if(emails.length == 0){
                 // NO CONTENT
-                res.status(204);
-                res.send(null);
+                res.sendStatus(204);
             }
             else{
                 // SUCCESS

@@ -7,10 +7,7 @@ router.get('/', (req, res) => {
     User.findAll()
         .then((users) => {
             if(users.length == 0){
-                res.status(204);
-                res.json({
-                    message:"No Content"
-                });
+                res.sendStatus(204);
             }
             else {
                 //SUCCESS
