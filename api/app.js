@@ -29,19 +29,19 @@ app.use((req, res, next) =>{
 app.use('/users', usersRoutes);
 app.use('/emails', emailsRoutes);
 
-// error 404 handler
+// error 400 handler
 app.use((req, res, next) => {
-    const error = Error('404 Not found');
-    error.status = 404;
+    const error = Error('400 Bad Request');
+    error.status = 400;
     next(error);
 });
+
 // other errors handler
 app.use((err, req, res, next) => {
     res.status(err.status || 500);
     res.json({
-        error: {
-            message: err.message
-        }
+        message: String(err.status),
+        error: err.message
     });
 });
 
